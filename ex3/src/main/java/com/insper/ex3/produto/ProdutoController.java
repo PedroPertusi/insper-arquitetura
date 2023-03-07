@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import jakarta.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,8 @@ import java.util.List;
 @RequestMapping("/produto")
 public class ProdutoController {
 
-    private ProdutoService produtoService = new ProdutoService();
+    @Autowired
+    private ProdutoService produtoService;
 
     @GetMapping
     public List<Produto> getProdutos() {

@@ -1,3 +1,9 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.project.sourcePaths": [
+        "aula-06/loja/src/main/java/com/insper/loja",
+        "aula-06/loja/src/main",
+        "demo/src/main/java"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

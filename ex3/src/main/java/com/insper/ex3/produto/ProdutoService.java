@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Service
+@Service //eh um bin gerenciavel do spring
 public class ProdutoService {
     
     private List<Produto> produtos = new ArrayList<>();
@@ -19,5 +19,11 @@ public class ProdutoService {
         produto.setId(UUID.randomUUID().toString());
         produtos.add(produto);
         return produto;
+    }
+
+    public Produto buscaProduto(String id) {
+        for (Produto produtos : prod) {
+            //completar
+        }
     }
 }
