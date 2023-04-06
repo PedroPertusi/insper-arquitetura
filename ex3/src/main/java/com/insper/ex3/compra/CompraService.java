@@ -19,16 +19,16 @@ public class CompraService {
         return compras;
     }
 
-    public Compra salvarCompra(Compra compra) {
-
-        for (Item item : compra.getItens()) {
-            Produto produto = produtoService.buscaProduto(item.getProduto().getId());
-            if (produto == null) {
-                return null
-            }
-        }
-        compra.setId(UUID.randomUUID().toString());
-        compras.add(compra);
-        return compra;
-    }
+//    public Compra salvarCompra(Compra compra) {
+//
+//        for (Item item : compra.getItens()) {
+//            Produto produto = produtoService.buscaProduto(item.getProduto().getId());
+//            if (produto == null) {
+//                return null;
+//            }
+//        }
+//        compra.setId(UUID.randomUUID().toString());
+//        compras.add(compra);
+//        return compra;
+//    }
 }

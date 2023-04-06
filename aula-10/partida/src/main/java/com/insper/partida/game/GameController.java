@@ -2,6 +2,7 @@ package com.insper.partida.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import spring
 
 import java.util.List;
 
@@ -13,7 +14,9 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping
-    public List<Game> listGames() {
+    public List<Game> listGames(@RequestParam(required = False) String nome,
+                                @RequestParam(required = False) String away,
+                                @Pageable pageable)  {
         return gameService.listGames();
     }
 

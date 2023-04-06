@@ -25,7 +25,8 @@ public class Compra {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra")
-    private List<Item> itens = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "id_carrinho")
+    private Carrinho carrinho;
 
 }

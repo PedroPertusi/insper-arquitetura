@@ -1,4 +1,4 @@
-package com.insper.partida.game;
+ package com.insper.partida.game;
 
 import com.insper.partida.equipe.Team;
 import com.insper.partida.equipe.TeamService;

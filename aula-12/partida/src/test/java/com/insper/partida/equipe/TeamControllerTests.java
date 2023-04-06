@@ -21,7 +21,7 @@ import java.util.List;
 @ExtendWith(MockitoExtension.class)
 public class TeamControllerTests {
 
-    MockMvc mockMvc;
+    MockMvc mockMvc; //classe do spring simula um servidor pra chamar as rotas
 
     @InjectMocks
     TeamController teamController;
@@ -48,18 +48,39 @@ public class TeamControllerTests {
 
         Mockito.when(teamService.listTeams()).thenReturn(times);
 
-        MvcResult result = mockMvc
+        MvcResult result = mockMvc //chama no metodo get e fala oq ela deve retornar
                 .perform(MockMvcRequestBuilders.get("/team"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andReturn();
+                .andReturn(); //json que retona
 
         ObjectMapper om = new ObjectMapper();
 
         String resp = result.getResponse().getContentAsString();
-        Assertions.assertEquals(om.writeValueAsString(times), resp);
+        Assertions.assertEquals(om.writeValueAsString(times), resp); //compara o json retornado pelo oq eu espero
 
     }
 
+    @Test
+    void test_saveTeam() {
+
+        Team team = new Team();
+        team.setId(1);
+        team.setName("time-1");
+
+        ObjectMapper mapper = new ObjectMapper();
+        String content = mapper.writeValueAsString(team)
+
+        Mockito.when(teamService.saveTeam(team)).thenReturn(team); //pra usar o team tem que criar a equals
+        Mockito.when(teamService.saveTeam(Mockito.any())).thenReturn(team); //mockito any ajuda em erros de esperado
+
+        MvcResult result = mockMvc //chama no metodo get e fala oq ela deve retornar
+                .perform(MockMvcRequestBuilders.post("/team").content(content).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk()) //isCreated() --> 201, is2xxSucessfull --> generico
+                .andReturn(); //json que retona
+
+        String resp = result.getResponse().getContentAsString();
+        Assertions.assertEquals(content, resp);
+    }
 
 
 

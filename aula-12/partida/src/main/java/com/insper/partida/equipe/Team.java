@@ -12,10 +12,12 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@EqualsAndHashCode
 public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Integer id;
 
     private String identifier;
@@ -31,4 +33,17 @@ public class Team {
     @JsonIgnore
     @OneToMany(mappedBy = "home")
     private List<Game> home;
+
+    @Override
+    public boolean equals(Object a) {
+        if (this == a) return true;
+        if (a == null || getClass() != a.getClass()) return false;
+        Team team = (Team) a;
+        return Objects.equals(id, team.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Object.hash(id);
+    }
 }

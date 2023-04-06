@@ -21,9 +21,9 @@ public class ProdutoService {
         return produto;
     }
 
-    public Produto buscaProduto(String id) {
-        for (Produto produtos : prod) {
-            //completar
-        }
-    }
+//    public Produto buscaProduto(String id) {
+//        for (Produto produtos : prod) {
+//            return produtos;
+//        }
+//    }
 }

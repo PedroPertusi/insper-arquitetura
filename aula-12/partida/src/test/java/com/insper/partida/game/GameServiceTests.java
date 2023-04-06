@@ -45,12 +45,12 @@ public class GameServiceTests {
         game.setAway(team2);
 
 
-        Pageable pageable = PageRequest.of(0, 8);
+        Pageable pageable = PageRequest.of(0, 8); //a pagina que quer e quantos retorna
 
-        List<Game> games = new ArrayList<>();
+        List<Game> games = new ArrayList<>(); //lista de jogos
         games.add(game);
 
-        Page<Game> pagedResponse = new PageImpl<>(games);
+        Page<Game> pagedResponse = new PageImpl<>(games); //como metodo espera página entao cria pagina de jogos
 
         Mockito.when(teamService.getTeam("time-1")).thenReturn(team);
         Mockito.when(teamService.getTeam("time-2")).thenReturn(team2);

@@ -9,12 +9,7 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Entity
+
 public class Cliente {
 
 
