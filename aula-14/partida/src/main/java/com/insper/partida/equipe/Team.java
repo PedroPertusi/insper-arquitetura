@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -31,4 +32,17 @@ public class Team {
     @JsonIgnore
     @OneToMany(mappedBy = "home")
     private List<Game> home;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return Objects.equals(id, team.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

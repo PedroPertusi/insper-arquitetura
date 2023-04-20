@@ -77,7 +77,7 @@ public class GameServiceTests {
 
         Game game = new Game();
         game.setHome(team);
-        game.setAway(team2);
+        game.setAway(team2);    
 
         Mockito.when(teamService.getTeam("time-1")).thenReturn(team);
         Mockito.when(teamService.getTeam("time-2")).thenReturn(team2);

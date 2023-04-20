@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BetService {
@@ -29,11 +30,38 @@ public class BetService {
     }
 
     public List<Bet> listBets() {
-        return null;
+        return betRespository.findAll();
     }
 
     public Bet verifyBet(Integer betId) {
-        return null;
+        Bet bet = betRespository.findById(betId).get();
+        Game game = bet.getGame();
+        if (bet.getResult().equals(BetResult.AWAY)) {
+            if (game.getScoreAway() > game.getScoreHome()) {
+                bet.setStatus(BetStatus.WON);
+            }
+            else {
+                bet.setStatus(BetStatus.LOST);
+            }
+        }
+        else if (bet.getResult().equals(BetResult.HOME)) {
+            if (game.getScoreAway() < game.getScoreHome()) {
+                bet.setStatus(BetStatus.WON);
+            }
+            else {
+                bet.setStatus(BetStatus.LOST);
+            }
+        }
+        else {
+            if (game.getScoreAway() == game.getScoreHome()) {
+                bet.setStatus(BetStatus.WON);
+            }
+            else {
+                bet.setStatus(BetStatus.LOST);
+            }
+        }
+
+        return bet;
     }
 
 }

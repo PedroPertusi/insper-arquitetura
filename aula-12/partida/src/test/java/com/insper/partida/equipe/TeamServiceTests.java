@@ -34,7 +34,7 @@ public class TeamServiceTests {
     void test_listTeamsNotEmpty() {
 
         Team team = getTeam();
-
+        
         List<Team> lista = new ArrayList<>();
         lista.add(team);
 

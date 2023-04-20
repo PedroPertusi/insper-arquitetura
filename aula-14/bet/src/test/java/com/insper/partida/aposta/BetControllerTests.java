@@ -2,7 +2,6 @@ package com.insper.partida.aposta;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.insper.partida.equipe.Team;
-import com.insper.partida.equipe.TeamController;
 import com.insper.partida.equipe.TeamService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
